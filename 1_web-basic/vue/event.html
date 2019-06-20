@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header v-bind:propsdata="num"
+        v-on:add="changeNum"> 
+        <!-- 하위 이벤트 = " 상위 이벤트 명 " -->
+    </app-header>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data : {
+                num: 10
+            },
+            components : {
+                'app-header' : {
+                    template : `<p>{{propsdata}} 
+                            <button v-on:click="sendEvent"> click me </button>
+                        </p>`,
+                    props : ['propsdata'],
+                    methods : {
+                        sendEvent: function(){
+                            this.$emit('add')
+                        }
+            }
+                }
+            },
+            methods : {
+                changeNum: function(){
+                    this.num = 200
+                }
+            }
+        });
+    </script>
+</body>
+</html>

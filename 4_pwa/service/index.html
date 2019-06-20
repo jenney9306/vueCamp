@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./common.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>hello sw</div>
+    <img src="./images/p.jpeg" alt="logo">
+    <script>
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+            .then(function (sw) {
+                //등록에 성공
+                console.log('등록 성공 ', sw);
+            })
+            .catch(function(error) {
+                //등록에 실패 
+                console.log('등록 실패 ', error);
+            })
+
+        }
+    </script>
+</body>
+</html>

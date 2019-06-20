@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Vue Axios Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <!-- TODO: axios로 받아온 데이터를 여기에 리스트로 뿌려보세요. -->
+      <ul>
+        <li v-for="item in list">
+          {{ item }} 
+        </li>
+      </ul>
+      <button v-on:click="getData">Get user data</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js!',
+          list : null
+        },
+        methods: {
+          getData: function() { 
+            var vm = this;
+            axios.get('https://jsonplaceholder.typicode.com/users/')
+              .then(function(response) {
+                console.log(response);
+                vm.list = response.data;
+              });
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

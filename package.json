@@ -1,0 +1,24 @@
+{
+  "name": "vue-pwa-camp",
+  "version": "1.0.0",
+  "description": "패스트캠퍼스 Vue로 구현하는 PWA 캠프 수업 자료",
+  "main": "index.js",
+  "dependencies": {
+    "mini-css-extract-plugin": "^0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshua1988/vue-pwa-camp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshua1988/vue-pwa-camp/issues"
+  },
+  "homepage": "https://github.com/joshua1988/vue-pwa-camp#readme"
+}

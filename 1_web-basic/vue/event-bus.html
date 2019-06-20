@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 3. 컴포넌트 태그 작성   -->
+        <app-header v-on:send="receive"></app-header>
+        <app-content></app-content>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+
+        var bus = new Vue({
+
+        });
+
+
+        //2. 컴포넌트 내용 정의
+        var appHeader = {
+            template : `
+            <header>
+                <button v-on:click="sendEvent">click me</button>
+            </header>`,
+            methods:{
+                sendEvent: function() {
+                    //1. 하위에서 이벤트 발생 
+                    this.$emit('send');
+                }
+            },
+            created: function(){ //컴포넌트가 생성되자마자 실행되는 라이프사이클 
+                bus.$on('pass', function(value){
+                    console.log(value);
+                });
+            },
+            beforeDestroy : function(){
+                bus.$off('pass'); // 이렇게 없애줘야함 아니면 계속 이벤트가 쌓여있음.
+            }
+        };
+
+        var appContent = {
+            template: `<p>나는 컨텐츠다 
+                            <button v-on:click="refresh">click</button>
+                        </p>`,
+            methods : {
+                refresh : function(){
+                    bus.$emit('pass', 10); //10을 pass라는 이름으로 던짐 
+                }
+            }
+        }
+
+        var app = new Vue({
+            el: '#app',
+            //1.컴포넌트 속성등록
+            components : {
+                'app-header' : appHeader,
+                'app-content' : appContent
+            },
+            methods:{
+                receive: function(){
+                    console.log('recevied'); //log
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

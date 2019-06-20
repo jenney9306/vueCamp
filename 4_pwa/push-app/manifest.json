@@ -1,0 +1,15 @@
+{
+  "short_name": "Progressive Web App",
+  "name": "App description with detailed info",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "background_color": "#00bcd4",
+  "start_url": "index.html?launcher=true",
+  "display": "standalone",
+  "gcm_sender_id" : "959131946014"
+}

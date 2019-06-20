@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="fetchData">get Data</button>
+        <div>
+            {{ user }}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data : {
+                user : null                
+            },
+            methods : {
+                fetchData : function(){
+                    var vm = this;
+                    axios.get('https://jsonplaceholder.typicode.com/users/1')
+                        .then( function(response){
+                            //성공
+                            console.log(response.data);
+                            vm.user = response.data;
+                        })
+                        .catch(function(error){
+                            //실패
+                            console.log(error);
+                            
+                        })
+                }
+            }
+        })
+    </script>
+
+</body>
+
+
+</html>

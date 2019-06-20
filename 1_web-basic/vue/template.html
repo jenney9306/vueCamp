@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .blue-text {
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <span id="100" class="blue-text">hello</span>
+            <span v-bind:id="num" v-bind:class="blueTextClass">hello</span>
+        </div>
+        <!-- 데이터 바인딩  -->
+        <p>{{ msg }}</p>
+        <!-- 뷰디렉티브  -->
+        <button v-if="logout">login</button>
+        <!-- ul>li -->
+        <ul> 
+            <li v-for="item in items">
+                {{ item }}
+            </li>
+        </ul>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el : '#app',
+            data : {
+                msg : 'hi',
+                logout : false,
+                items : ['item1','item2','item3'],
+                blueTextClass : 'blue-text',
+                num : 100,
+            }
+        });
+    </script>
+</body>
+</html>

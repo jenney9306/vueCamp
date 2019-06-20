@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-content></app-content>
+        <app-footer v-bind:num="rootNum"></app-footer>
+   </div>  <!-- div#app -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //NOTE: 전역컴포넌트 
+        Vue.component('app-header', {
+            template : '<h1>header</h1>'
+        }) //무조건 하나만 등록하므로 s 없음 
+
+        new Vue({
+            el: '#app',
+            data : {
+                str : 'hi',
+                rootNum : 10
+            },
+            components : { // NOTE : 지역 컴포넌트 
+                'app-content' : {
+                    template : '<div>content</div>' // template : 화면에 표현하는 내용 
+                },
+                'app-footer' : {
+                    props : ['num'],
+                    template : '<div>i am footer !    {{num}} </div>',
+                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>
