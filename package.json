@@ -4,7 +4,7 @@
   "description": "패스트캠퍼스 Vue로 구현하는 PWA 캠프 수업 자료",
   "main": "index.js",
   "dependencies": {
-    "mini-css-extract-plugin": "^0.7.0"
+    "mini-css-extract-plugin": "^2.7.2"
   },
   "devDependencies": {},
   "scripts": {
